@@ -43,16 +43,11 @@
     - cert
   when: ansible_distribution == 'CentOS'
 
-
 - name: Start Nginx
   service:
     name: nginx
     state: restarted
     enabled: yes
-
-- set_fact:
-    webserver: nginx
-
 
 - name: Check Nginx Version
   shell: nginx -v
