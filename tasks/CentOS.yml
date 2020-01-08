@@ -18,7 +18,6 @@
     enabled: no
     gpgkey: https://nginx.org/keys/nginx_signing.key
 
-
 - name: Install Nginx
   yum:
     name: [nginx]
