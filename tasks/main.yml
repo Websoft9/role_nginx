@@ -4,12 +4,10 @@
 - import_tasks: Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
 
-
 - name: Configure Nginx
   copy:
     src: nginx.conf
     dest: /etc/nginx/
-
 
 - name: Create a Nginx Log symbolic link
   file:
@@ -30,7 +28,6 @@
     - wwwroot
     - cert
   when: ansible_distribution == 'Ubuntu'
-
 
 - name: Change Directory Owner
   file:
