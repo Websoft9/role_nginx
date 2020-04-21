@@ -1,3 +1,7 @@
-- name: Nginx Version
+- name: check_nginx_version
   debug:
-    var: nginx_ver.stderr
+    var: check_nginx_version.stderr
+    
+- name: check_nginx_service
+  debug:
+    var: check_nginx_service.stderr
