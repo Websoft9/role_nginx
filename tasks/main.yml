@@ -57,7 +57,13 @@
     state: restarted
     enabled: yes
 
-- name: Check Nginx Version
+# display version and service state of components
+- name: Get Nginx version
   shell: nginx -v
-  register: nginx_ver
-  notify: Nginx Version
+  register: check_nginx_version
+  notify: check_nginx_version
+
+- name: Check Nginx Service
+  shell: systemctl status nginx | grep Active*
+  register: check_nginx_service
+  notify: check_nginx_service
