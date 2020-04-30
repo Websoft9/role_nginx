@@ -59,9 +59,7 @@
 
 # display version and service state of components
 - name: Get Nginx version
-  shell: nginx -v
-  register: check_nginx_version
-  notify: check_nginx_version
+  shell: nginx -v 2>> /data/logs/install_version.txt
 
 - name: Check Nginx Service
   shell: systemctl status nginx | grep Active*
