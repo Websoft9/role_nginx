@@ -1,5 +1,5 @@
 server {
-    listen 80;
+    listen {{ nginx_listen_port }};
     server_name _;
     location / {
         proxy_pass  http://127.0.0.1:{{ nginx_reverse_proxy_port }};
