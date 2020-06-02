@@ -3,3 +3,6 @@ nginx_reverse_proxy_port:
 
 # default listen port of default.conf
 nginx_listen_port: "80"
+
+# nginx username and password swith True|False
+nginx_htpasswd: False
