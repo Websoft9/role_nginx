@@ -34,6 +34,7 @@ roles:
 | ------------------| ------------------|-----|-----|
 | nginx_reverse_proxy_portb | "8000","8080"  | 字符串 | 是 |
 | nginx_listen_port | "80"  | 字符串 | 否 |
+| nginx_htpasswd | True,False  | 布尔型 | 否 |
 
 Notes:
 
