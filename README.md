@@ -32,12 +32,10 @@ roles:
 
 | **Items**      | **Details** | **Format**  | **是否初始化** |
 | ------------------| ------------------|-----|-----|
-| init_db | 参考下方  | 字典 | 否 |
-| init_application | [...]   | 字典 | 否 |
+| nginx_reverse_proxy_portb | "8000","8080"  | 字符串 | 是 |
+| nginx_listen_port | "80"  | 字符串 | 否 |
 
-注意：
-1. init_application 和 init_application 初始化在项目主变量文件中统一修改。
-2. 默认数据库管理员密码初始化范例（程序已经自动处理随机密码脚本与其service的先后关系）
+Notes:
 
 
 ## Example
