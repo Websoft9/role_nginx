@@ -28,8 +28,16 @@ roles:
 
 ## Variables
 
-暂无
+本 Role 主要变量以及使用方法如下：
 
+| **Items**      | **Details** | **Format**  | **是否初始化** |
+| ------------------| ------------------|-----|-----|
+| init_db | 参考下方  | 字典 | 否 |
+| init_application | [...]   | 字典 | 否 |
+
+注意：
+1. init_application 和 init_application 初始化在项目主变量文件中统一修改。
+2. 默认数据库管理员密码初始化范例（程序已经自动处理随机密码脚本与其service的先后关系）
 
 
 ## Example
