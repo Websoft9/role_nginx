@@ -57,7 +57,7 @@
     copy:
       src: htpasswd.conf
       dest: /etc/nginx/.htpasswd
-  - name: Insert ngnix service  password authority 
+  - name: Insert ngnix service password authority segment
     blockinfile:
       path: /etc/nginx/conf.d/default.conf
       insertafter: "proxy_temp_file_write_size 64k;"
