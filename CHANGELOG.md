@@ -2,7 +2,7 @@
 
 ## To do
 
-1. 
+1. Add username and password authority
 
 ## Logs
 
