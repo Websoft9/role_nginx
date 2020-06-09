@@ -79,4 +79,4 @@
 - name: Check Nginx Service
   shell: systemctl status nginx | grep Active*
   register: check_nginx_service
-  notify: check_nginx_service
+  notify: check_nginx_service 
