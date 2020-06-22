@@ -1,8 +1,5 @@
-- import_tasks: RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- import_tasks: Debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Install this role on {{ansible_os_family}}
+  include: "{{ansible_os_family}}.yml"
 
 - name: Configure Nginx
   copy:
