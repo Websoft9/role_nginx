@@ -41,7 +41,7 @@
   template:
     src: reverse_proxy.jinja2
     dest: /etc/nginx/conf.d/default.conf
-  when: nginx_reverse_proxy_port
+  when: nginx_reverse_proxy_port is defined and nginx_reverse_proxy_port not none
 
 - name: create Directory extra
   file:
