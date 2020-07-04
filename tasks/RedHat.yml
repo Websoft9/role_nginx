@@ -20,7 +20,6 @@
       gpgkey: https://nginx.org/keys/nginx_signing.key
   when: ansible_distribution == 'CentOS'
 
-
 - block:
   - name: Import Nginx Official stable Repo
     yum_repository:
@@ -43,9 +42,13 @@
       gpgkey: https://nginx.org/keys/nginx_signing.key
   when: ansible_distribution == 'Amazon'
 
-
-
-
 - name: Install Nginx
   yum:
     name: [nginx]
+
+#2 Install Certbot for Nginx
+- name: Install certbot
+  shell: |
+    yum install -y certbot python2-certbot-nginx
+    echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
+  when: nginx_certbot
