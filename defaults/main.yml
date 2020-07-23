@@ -8,4 +8,4 @@ nginx_listen_port: "80"
 # default credentials is admin/admin
 nginx_htpasswd: False
 
-nginx_certbot: False
+nginx_certbot: True
