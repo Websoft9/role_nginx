@@ -2,7 +2,7 @@
 
 ## To do
 
-1. Add username and password authority
+1. Add
 
 ## Logs
 
@@ -13,6 +13,7 @@
 
 ### Features
 
+* 2020-07-10  Add username and password authority
 * 2020-07-04  Add certbot installation
 * 2020-06-02  Add username and password authority
 * 2020-02-14  repository created
