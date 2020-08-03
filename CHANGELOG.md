@@ -2,7 +2,7 @@
 
 ## To do
 
-1. Add
+1. certbot error on CentOS
 
 ## Logs
 
