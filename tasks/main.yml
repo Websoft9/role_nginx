@@ -15,17 +15,6 @@
     - {src: /etc/nginx/conf.d,dest: /data/config/nginx}  
     - {src: /var/log/nginx,dest: /data/logs/nginx}  
 
-- name: Change Directory Owner
-  file:
-    path: /data/{{item}}
-    state: directory
-    owner: nginx
-    group: nginx
-  with_items:
-    - wwwroot
-    - cert
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Amazon'
-
 - name: Set Reverse proxy
   template:
     src: reverse_proxy.jinja2
