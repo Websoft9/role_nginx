@@ -25,3 +25,13 @@
     apt-get install -y certbot python3-certbot-nginx
     certbot renew --dry-run
   when: nginx_certbot
+
+- name: Change Directory Owner
+  file:
+    path: /data/{{item}}
+    state: directory
+    owner: www-data
+    group: www-data
+  with_items:
+    - wwwroot
+    - cert
