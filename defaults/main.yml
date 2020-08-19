@@ -7,6 +7,8 @@ nginx_vhost_mode: "www"
 # default listen port of default.conf
 nginx_listen_port: "80"
 
+nginx_rewritefile: "example"
+
 # nginx username and password swith True|False
 # default credentials is admin/admin
 nginx_htpasswd: False
