@@ -1,3 +1,5 @@
+{% if nginx_reverse_proxy_port % }
+
 server {
     listen {{ nginx_listen_port }};
     server_name _;
@@ -19,3 +21,21 @@ server {
    }
    include extra/*.conf;
 }
+{ % else % } 
+server
+{
+    listen 80; 
+    server_name www.example.com; 
+    index index.html index.htm index.php; 
+    root  /data/wwwroot/www.example.com; 
+    error_log /var/log/nginx/www.example.com-error.log error;
+    access_log  /var/log/nginx/www.example.com-access.log;
+    include extra/*.conf;
+
+
+#------------- SSL Start --------------
+
+
+#------------- SSL End  ---------------
+}
+{ % endif % }
