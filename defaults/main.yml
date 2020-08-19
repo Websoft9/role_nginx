@@ -1,6 +1,8 @@
 # port for java/nodejs...  8080 | 3000
 nginx_reverse_proxy_port:
-nginx_reverse_proxy_flag: false
+
+# reverse | alias | www | 
+nginx_vhost_mode: "www"
 
 # default listen port of default.conf
 nginx_listen_port: "80"
