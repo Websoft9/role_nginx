@@ -1,5 +1,4 @@
-{% if nginx_reverse_proxy_port % }
-
+{ % if nginx_reverse_proxy_port % }
 server {
     listen {{ nginx_listen_port }};
     server_name _;
