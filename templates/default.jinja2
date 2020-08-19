@@ -1,4 +1,4 @@
-{ % if nginx_reverse_proxy_port % }
+{ % if nginx_vhost_mode == "reverse" % }
 server {
     listen {{ nginx_listen_port }};
     server_name _;
@@ -20,7 +20,9 @@ server {
    }
    include extra/*.conf;
 }
-{ % else % } 
+{ % endif % }
+
+{ % if nginx_vhost_mode == "www" % }
 server
 {
     listen 80; 
