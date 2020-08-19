@@ -52,3 +52,13 @@
     yum install -y certbot python2-certbot-nginx
     echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
   when: nginx_certbot
+  
+- name: Change Directory Owner
+  file:
+    path: /data/{{item}}
+    state: directory
+    owner: nginx
+    group: nginx
+  with_items:
+    - wwwroot
+    - cert
