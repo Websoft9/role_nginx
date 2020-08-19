@@ -61,8 +61,8 @@ server
 { % endif % }
 
 { % if nginx_vhost_mode == "alias" % }
-Alias /discuz "/data/wwwroot/{{wordpress_addapps}}/{{wordpress_addapps_meta[wordpress_addapps].documentroot}}"
-<Directory "/data/wwwroot/{{wordpress_addapps}}/{{wordpress_addapps_meta[wordpress_addapps].documentroot}}">
+Alias /discuz "/data/wwwroot/www.example.com"
+<Directory "/data/wwwroot/www.example.com">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride all
     Require all granted
