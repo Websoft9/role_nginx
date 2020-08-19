@@ -32,6 +32,7 @@ server
     error_log /var/log/nginx/www.example.com-error.log error;
     access_log  /var/log/nginx/www.example.com-access.log;
     include extra/*.conf;
+    include conf.d/rewrite/{{nginx_rewritefile}}.conf;
 
 
 #------------- SSL Start --------------
