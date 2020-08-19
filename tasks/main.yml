@@ -45,9 +45,12 @@
 
 - name: create Directory extra
   file:
-    path: /etc/nginx/extra
+    path: "{{item}}"
     state: directory
     recurse: true
+  loop:
+    - /etc/nginx/extra
+    - /data/wwwroot/www.example.com
 
 # add new user and password setfile
 - block: 
