@@ -7,6 +7,7 @@ nginx_vhost_mode: "www"
 # default listen port of default.conf
 nginx_listen_port: "80"
 
+# wordpress | discuz | joomla ,more refer to files/rewrite folder
 nginx_rewritefile: "example"
 
 # nginx username and password swith True|False
