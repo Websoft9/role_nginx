@@ -47,6 +47,7 @@
   file:
     path: /etc/nginx/extra
     state: directory
+    recurse: true
 
 # add new user and password setfile
 - block: 
