@@ -1,4 +1,5 @@
-{ % if nginx_vhost_mode == "reverse" % }
+
+{% if nginx_vhost_mode == 'reverse' %}
 server {
     listen {{ nginx_listen_port }};
     server_name _;
@@ -22,9 +23,9 @@ server {
    access_log  /var/log/nginx/www.{{nginx_appname}}.com-access.log;
    include extra/*.conf;
 }
-{ % endif % }
+{% endif %}
 
-{ % if nginx_vhost_mode == "www" % }
+{% if nginx_vhost_mode == 'www' %}
 server
 {
     listen 80; 
@@ -42,14 +43,13 @@ server
 
 #------------- SSL End  ---------------
 }
-{ % endif % }
+{% endif %}
 
-
-{ % if nginx_vhost_mode == "alias" % }
+{% if nginx_vhost_mode == 'alias' %}
 Alias /app1 "/data/wwwroot/www.{{nginx_appname}}.com"
 <Directory "/data/wwwroot/www.{{nginx_appname}}.com">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride all
     Require all granted
 </Directory>
-{ % endif % }
+{% endif %}
