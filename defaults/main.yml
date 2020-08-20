@@ -3,6 +3,7 @@ nginx_reverse_proxy_port:
 
 # reverse | alias | www | 
 nginx_vhost_mode: "www"
+nginx_appname: "example"
 
 # default listen port of default.conf
 nginx_listen_port: "80"
