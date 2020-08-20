@@ -3,13 +3,12 @@ nginx_reverse_proxy_port:
 
 # reverse | alias | www | 
 nginx_vhost_mode: "www"
+
+# wordpress | discuz | joomla ,more refer to files/rewrite folder
 nginx_appname: "example"
 
 # default listen port of default.conf
 nginx_listen_port: "80"
-
-# wordpress | discuz | joomla ,more refer to files/rewrite folder
-nginx_rewritefile: "example"
 
 # nginx username and password swith True|False
 # default credentials is admin/admin
