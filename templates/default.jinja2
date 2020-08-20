@@ -26,13 +26,13 @@ server {
 server
 {
     listen 80; 
-    server_name www.example.com; 
+    server_name www.{{nginx_appname}}.com; 
     index index.html index.htm index.php; 
-    root  /data/wwwroot/www.example.com; 
-    error_log /var/log/nginx/www.example.com-error.log error;
-    access_log  /var/log/nginx/www.example.com-access.log;
+    root  /data/wwwroot/www.{{nginx_appname}}.com; 
+    error_log /var/log/nginx/www.{{nginx_appname}}.com-error.log error;
+    access_log  /var/log/nginx/www.{{nginx_appname}}.com-access.log;
     include extra/*.conf;
-    include conf.d/rewrite/{{nginx_rewritefile}}.conf;
+    include conf.d/rewrite/{{nginx_appname}}.conf;
 
 
 #------------- SSL Start --------------
@@ -44,8 +44,8 @@ server
 
 
 { % if nginx_vhost_mode == "alias" % }
-Alias /app1 "/data/wwwroot/www.example.com"
-<Directory "/data/wwwroot/www.example.com">
+Alias /app1 "/data/wwwroot/www.{{nginx_appname}}.com"
+<Directory "/data/wwwroot/www.{{nginx_appname}}.com">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride all
     Require all granted
