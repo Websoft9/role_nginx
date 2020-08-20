@@ -15,25 +15,25 @@
     - {src: /etc/nginx/conf.d,dest: /data/config/nginx}  
     - {src: /var/log/nginx,dest: /data/logs/nginx}
 
-
-- name: Copy rewrite file
-  copy:
-    src: rewrite/{{}}.conf
-    dest: /etc/nginx/conf.d/rewrite/{{}}.conf
-
 - name: Set Reverse proxy
   template:
     src: default.jinja2
     dest: /etc/nginx/conf.d/default.conf
 
-- name: create Directory extra
+- name: create nginx's Directory
   file:
     path: "{{item}}"
     state: directory
     recurse: true
   loop:
+    - /etc/nginx/conf.d/rewrite
     - /etc/nginx/extra
-    - /data/wwwroot/www.example.com
+    - /data/wwwroot/www.{{nginx_appname}}.com
+    
+- name: Copy rewrite file
+  copy:
+    src: rewrite/{{nginx_appname}}.conf
+    dest: /etc/nginx/conf.d/rewrite/{{nginx_appname}}.conf
 
 # add new user and password setfile
 - block: 
