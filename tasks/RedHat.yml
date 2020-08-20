@@ -62,10 +62,3 @@
   with_items:
     - wwwroot
     - cert
- 
-- name: Copy Default Vhost config and rewrite
-  copy: 
-    src: "{{item.src}}" 
-    dest: "{{item.dest}}"
-  with_items:
-    - {src: rewrite, dest: /etc/nginx/conf.d}
