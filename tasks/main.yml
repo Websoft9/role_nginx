@@ -13,7 +13,13 @@
     state: link
   with_items:
     - {src: /etc/nginx/conf.d,dest: /data/config/nginx}  
-    - {src: /var/log/nginx,dest: /data/logs/nginx}  
+    - {src: /var/log/nginx,dest: /data/logs/nginx}
+
+
+- name: Copy rewrite file
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/conf.d
 
 - name: Set Reverse proxy
   template:
