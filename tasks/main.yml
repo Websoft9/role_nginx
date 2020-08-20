@@ -18,8 +18,8 @@
 
 - name: Copy rewrite file
   copy:
-    src: nginx.conf
-    dest: /etc/nginx/conf.d
+    src: rewrite/{{}}.conf
+    dest: /etc/nginx/conf.d/rewrite/{{}}.conf
 
 - name: Set Reverse proxy
   template:
