@@ -19,8 +19,15 @@ server {
         proxy_busy_buffers_size    64k;
         proxy_temp_file_write_size 64k;
    }
-   error_log /var/log/nginx/www.{{nginx_appname}}.com-error.log error;
-   access_log  /var/log/nginx/www.{{nginx_appname}}.com-access.log;
+   {% if nginx_appname == 'example' %}
+      error_log /var/log/nginx/www.example.com-error.log error;
+      access_log  /var/log/nginx/www.example.com-access.log;
+   {% endif %}
+   {% if nginx_appname != 'example' %}
+      error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
+      access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
+   {% endif %}
+
    include extra/*.conf;
 }
 {% endif %}
@@ -30,11 +37,25 @@ server
 {
     listen 80;
     # server_name support more than two domains, example : domain1 domain2 domain3
-    server_name www.{{nginx_appname}}.com; 
+    {% if nginx_appname == 'example' %}
+      server_name www.example.com;
+    {% endif %}
+    {% if nginx_appname != 'example' %}
+      server_name {{nginx_appname}}.yourdomain.com;
+    {% endif %}
+     
     index index.html index.htm index.php; 
-    root  /data/wwwroot/www.{{nginx_appname}}.com; 
-    error_log /var/log/nginx/www.{{nginx_appname}}.com-error.log error;
-    access_log  /var/log/nginx/www.{{nginx_appname}}.com-access.log;
+    {% if nginx_appname == 'example' %}
+      root  /data/wwwroot/www.example.com; 
+      error_log /var/log/nginx/www.example.com-error.log error;
+      access_log  /var/log/nginx/www.example.com-access.log;
+    {% endif %}
+    {% if nginx_appname != 'example' %}
+      root  /data/wwwroot/{{nginx_appname}}.yourdomain.com; 
+      error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
+      access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
+    {% endif %}    
+
     include extra/*.conf;
     include conf.d/rewrite/{{nginx_appname}}.conf;
 
@@ -47,8 +68,14 @@ server
 {% endif %}
 
 {% if nginx_vhost_mode == 'alias' %}
-Alias /app1 "/data/wwwroot/www.{{nginx_appname}}.com"
-<Directory "/data/wwwroot/www.{{nginx_appname}}.com">
+{% if nginx_appname == 'example' %}
+Alias /app1 "/data/wwwroot/www.example.com"
+<Directory "/data/wwwroot/www.example.com">
+{% endif %}
+{% if nginx_appname != 'example' %}
+Alias /app1 "/data/wwwroot/{{nginx_appname}}.yourdomain.com"
+<Directory "/data/wwwroot/{{nginx_appname}}.yourdomain.com">
+{% endif %}   
     Options Indexes FollowSymLinks MultiViews
     AllowOverride all
     Require all granted
