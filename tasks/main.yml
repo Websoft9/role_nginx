@@ -28,7 +28,7 @@
   loop:
     - /etc/nginx/conf.d/rewrite
     - /etc/nginx/extra
-    - /data/wwwroot/www.{{nginx_appname}}.com
+    - /data/wwwroot/www.example.com
     
 - name: Copy rewrite file
   copy:
