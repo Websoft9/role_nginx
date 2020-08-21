@@ -28,7 +28,8 @@ server {
 {% if nginx_vhost_mode == 'www' %}
 server
 {
-    listen 80; 
+    listen 80;
+    # server_name support more than two domains, example : domain1 domain2 domain3
     server_name www.{{nginx_appname}}.com; 
     index index.html index.htm index.php; 
     root  /data/wwwroot/www.{{nginx_appname}}.com; 
