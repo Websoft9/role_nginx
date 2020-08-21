@@ -32,9 +32,9 @@
     
 - name: Copy rewrite file
   copy:
-    src: rewrite/{{nginx_appname}}.conf
-    dest: /etc/nginx/conf.d/rewrite/{{nginx_appname}}.conf
-
+    src: rewrite
+    dest: /etc/nginx/conf.d/rewrite
+    
 # add new user and password setfile
 - block: 
   - name: Copy htpasswd.conf
