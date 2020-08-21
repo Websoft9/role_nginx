@@ -26,14 +26,13 @@
     state: directory
     recurse: true
   loop:
-    - /etc/nginx/conf.d/rewrite
     - /etc/nginx/extra
     - /data/wwwroot/www.example.com
     
 - name: Copy rewrite file
   copy:
     src: rewrite
-    dest: /etc/nginx/conf.d/rewrite
+    dest: /etc/nginx/conf.d/
     
 # add new user and password setfile
 - block: 
