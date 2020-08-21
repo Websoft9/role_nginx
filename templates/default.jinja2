@@ -20,12 +20,12 @@ server {
         proxy_temp_file_write_size 64k;
    }
    {% if nginx_appname == 'example' %}
-      error_log /var/log/nginx/www.example.com-error.log error;
-      access_log  /var/log/nginx/www.example.com-access.log;
+   error_log /var/log/nginx/www.example.com-error.log error;
+   access_log  /var/log/nginx/www.example.com-access.log;
    {% endif %}
    {% if nginx_appname != 'example' %}
-      error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
-      access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
+   error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
+   access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
    {% endif %}
 
    include extra/*.conf;
@@ -38,22 +38,22 @@ server
     listen 80;
     # server_name support more than two domains, example : domain1 domain2 domain3
     {% if nginx_appname == 'example' %}
-      server_name www.example.com;
+    server_name www.example.com;
     {% endif %}
     {% if nginx_appname != 'example' %}
-      server_name {{nginx_appname}}.yourdomain.com;
+    server_name {{nginx_appname}}.yourdomain.com;
     {% endif %}
      
     index index.html index.htm index.php; 
     {% if nginx_appname == 'example' %}
-      root  /data/wwwroot/www.example.com; 
-      error_log /var/log/nginx/www.example.com-error.log error;
-      access_log  /var/log/nginx/www.example.com-access.log;
+    root  /data/wwwroot/www.example.com; 
+    error_log /var/log/nginx/www.example.com-error.log error;
+    access_log  /var/log/nginx/www.example.com-access.log;
     {% endif %}
     {% if nginx_appname != 'example' %}
-      root  /data/wwwroot/{{nginx_appname}}.yourdomain.com; 
-      error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
-      access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
+    root  /data/wwwroot/{{nginx_appname}}.yourdomain.com; 
+    error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
+    access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
     {% endif %}    
 
     include extra/*.conf;
