@@ -68,16 +68,41 @@ server
 {% endif %}
 
 {% if nginx_vhost_mode == 'alias' %}
-{% if nginx_appname == 'example' %}
-Alias /app1 "/data/wwwroot/www.example.com"
-<Directory "/data/wwwroot/www.example.com">
-{% endif %}
-{% if nginx_appname != 'example' %}
-Alias /app1 "/data/wwwroot/{{nginx_appname}}.yourdomain.com"
-<Directory "/data/wwwroot/{{nginx_appname}}.yourdomain.com">
-{% endif %}   
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride all
-    Require all granted
-</Directory>
+server {
+    listen 80;
+    # server_name support more than two domains, example : domain1 domain2 domain3
+    {% if nginx_appname == 'example' %}
+    server_name www.example.com;
+    {% endif %}
+    {% if nginx_appname != 'example' %}
+    server_name {{nginx_appname}}.yourdomain.com;
+    {% endif %}    
+    index index.html index.htm index.php;
+    
+    location /{{nginx_appname}} {
+        alias /data/apps/{{nginx_appname}};
+        index index.php index.html;
+        location ~ ^/{{nginx_appname}}/.+\.php$ {
+            alias /data/apps/{{nginx_appname}};
+            fastcgi_pass  unix:/run/php-fpm.sock;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME /data/apps/$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp3|wma)$
+        {
+            expires      30d;
+            access_log off;
+        }
+        location ~ .*\.(js|css)$
+        {
+            expires      12h;
+            access_log off;
+        }
+
+        location ~* \.(ftpquota|htaccess|htpasswd|asp|aspx|jsp|asa|mdb)?$ {
+            deny all;
+        }
+    }
+}
 {% endif %}
