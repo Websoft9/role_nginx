@@ -37,13 +37,12 @@ server
 {
     listen 80;
     # server_name support more than two domains, example : domain1 domain2 domain3
-    {% if nginx_appname == 'example' %}
+{% if nginx_appname == 'example' %}
     server_name www.example.com;
-    {% endif %}
-    {% if nginx_appname != 'example' %}
+{% endif %}
+{% if nginx_appname != 'example' %}
     server_name {{nginx_appname}}.yourdomain.com;
-    {% endif %}
-     
+{% endif %} 
     index index.html index.htm index.php; 
     {% if nginx_appname == 'example' %}
     root  /data/wwwroot/www.example.com; 
@@ -51,7 +50,7 @@ server
     access_log  /var/log/nginx/www.example.com-access.log;
     {% endif %}
     {% if nginx_appname != 'example' %}
-    root  /data/wwwroot/{{nginx_appname}}.yourdomain.com; 
+    root  /data/wwwroot/{{nginx_appname}}; 
     error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
     access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
     {% endif %}    
