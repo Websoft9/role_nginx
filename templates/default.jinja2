@@ -35,7 +35,11 @@ server
     listen 80;
     server_name {{nginx_appname}}.yourdomain.com;
     index index.html index.htm index.php; 
+{% if nginx_app_root is not none %}
+    root  {{nginx_app_root}}; 
+{% else %}
     root  /data/wwwroot/{{nginx_appname}}; 
+{% endif %}
     error_log /var/log/nginx/{{nginx_appname}}.yourdomain.com-error.log error;
     access_log  /var/log/nginx/{{nginx_appname}}.yourdomain.com-access.log;
 
