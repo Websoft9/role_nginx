@@ -27,7 +27,6 @@
     recurse: true
   loop:
     - /etc/nginx/extra
-    - /data/wwwroot/{{nginx_appname}}
 
 - block:
   - name: Copy rewrite file
