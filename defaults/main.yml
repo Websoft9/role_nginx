@@ -4,7 +4,8 @@ nginx_vhost_mode: "www"
 # port for java/nodejs...  8080 | 3000, this var must used when [nginx_vhost_mode] is reverse
 nginx_reverse_proxy_port:
 
-# app root directory, if /data/wwwroot/{{nginx_appname}} in the templates is not suitable for you application, 
+# app root directory
+# if /data/wwwroot/{{nginx_appname}} in the templates is not suitable for you application, 
 # you should define complete directory, e.g /data/wwwroot/discuz/upload
 nginx_app_root:
 
