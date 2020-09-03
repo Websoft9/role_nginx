@@ -1,8 +1,8 @@
-# port for java/nodejs...  8080 | 3000
-nginx_reverse_proxy_port:
-
 # reverse | alias | www | 
 nginx_vhost_mode: "www"
+
+# port for java/nodejs...  8080 | 3000, this var must used when [nginx_vhost_mode] is reverse
+nginx_reverse_proxy_port:
 
 # wordpress | discuz | joomla ,more refer to files/rewrite folder
 nginx_appname: "example"
