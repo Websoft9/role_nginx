@@ -28,11 +28,17 @@
   loop:
     - /etc/nginx/extra
     - /data/wwwroot/www.example.com
-    
-- name: Copy rewrite file
-  copy:
-    src: rewrite
-    dest: /etc/nginx/conf.d/
+
+- block:
+  - name: Copy rewrite file
+    copy:
+      src: rewrite
+      dest: /etc/nginx/conf.d/
+
+  - name: Create nginx_appname.conf in /etc/nginx/conf.d/rewrite
+    shell: if [ ! $( ls | grep "{{nginx_appname}}") ]; then touch {{nginx_appname}}.conf ; fi
+    args:
+      chdir: /etc/nginx/conf.d/rewrite
     
 # add new user and password setfile
 - block: 
