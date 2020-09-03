@@ -10,8 +10,7 @@ nginx_appname: "example"
 # default listen port of default.conf
 nginx_listen_port: "80"
 
-# nginx username and password swith True|False
-# default credentials is admin/admin
+# nginx username and password swith True|False, default credentials is admin/admin
 nginx_htpasswd: False
 
 nginx_certbot: True
