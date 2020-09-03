@@ -36,7 +36,6 @@ server {
 server
 {
     listen 80;
-    # server_name support more than two domains, example : domain1 domain2 domain3
 {% if nginx_appname == 'example' %}
     server_name www.example.com;
 {% endif %}
@@ -69,7 +68,6 @@ server
 {% if nginx_vhost_mode == 'alias' %}
 server {
     listen 80;
-    # server_name support more than two domains, example : domain1 domain2 domain3
     {% if nginx_appname == 'example' %}
     server_name www.example.com;
     {% endif %}
