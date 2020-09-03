@@ -32,9 +32,10 @@ roles:
 
 | **Items**      | **Details** | **Format**  | **是否初始化** |
 | ------------------| ------------------|-----|-----|
-| nginx_reverse_proxy_portb | "8000","8080"  | 字符串 | 是 |
-| nginx_listen_port | "80"  | 字符串 | 否 |
-| nginx_htpasswd | True,False  | 布尔型 | 否 |
+| nginx_vhost_mode | default.conf template, selected from [reverse,www,alias]  | String | No |
+| nginx_reverse_proxy_port | when use reverse template, this var must used  | String | No |
+| nginx_listen_port | "80"  | String | No |
+| nginx_htpasswd | True,False  | Boolean | No |
 
 Notes:
 
