@@ -4,6 +4,9 @@ nginx_vhost_mode: "www"
 # port for java/nodejs...  8080 | 3000, this var must used when [nginx_vhost_mode] is reverse
 nginx_reverse_proxy_port:
 
+# app root directory
+nginx_app_root:
+
 # wordpress | discuz | joomla , if you use Websoft9's php applicaiton repository, suggest you use the appname in the directory: /etc/nginx/conf.d/rewrite
 nginx_appname: "example"
 
