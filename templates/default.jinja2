@@ -1,4 +1,4 @@
-{% if nginx_vhost_mode == 'reverse' %}
+{% if nginx_vhost_mode == 'reverse' || nginx_reverse_proxy_port != "" %}
 server {
     listen {{ nginx_listen_port }};
     server_name {{nginx_appname}}.yourdomain.com;
@@ -29,7 +29,7 @@ server {
 }
 {% endif %}
 
-{% if nginx_vhost_mode == 'www' %}
+{% if nginx_vhost_mode == 'www' && nginx_reverse_proxy_port == "" %}
 server
 {
     listen 80;
