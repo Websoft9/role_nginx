@@ -28,13 +28,6 @@
   apt:
     name: [nginx]
 
-#3 Install Certbot for Nginx
-- name: Install certbot
-  shell: |
-    snap install --classic certbot
-    ln -sf /snap/bin/certbot /usr/bin/certbot
-  when: nginx_certbot
-
 - name: Change Directory Owner
   file:
     path: /data/{{item}}
