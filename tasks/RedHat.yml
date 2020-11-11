@@ -1,3 +1,28 @@
+# use yumdownloader and rpm install requires package,waiting for rhel official update repo
+- block:
+  - name: Install requires package and remove on second installation
+    shell: |
+      yumdownloader snapd-selinux-2.47.1-1.el7.noarch
+      rpm --force --nodeps -ivh snapd-selinux-2.47.1-1.el7.noarch.rpm
+      test -e snapd-selinux-* && rm -rf snapd-selinux-*.rpm
+      
+  - name: Install snap tools
+    yum: 
+      name: snapd
+      update_cache: yes      
+  
+  - name: enable and create link for snap
+    shell: |
+      systemctl enable --now snapd.socket
+      ln -sf /var/lib/snapd/snap /data
+      
+  - name: Install and upgrade core 
+    shell: |
+      snap install core 
+      snap refresh core
+      ln -sf /snap /data
+    failed_when: false
+  
 - block:
   - name: Import Nginx Official stable Repo
     yum_repository:
@@ -45,13 +70,6 @@
 - name: Install Nginx
   yum:
     name: [nginx]
-
-#2 Install Certbot for Nginx
-- name: Install certbot
-  shell: |
-    yum install -y certbot python2-certbot-nginx
-    echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
-  when: nginx_certbot
   
 - name: Change Directory Owner
   file:
