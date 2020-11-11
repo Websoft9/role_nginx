@@ -1,4 +1,18 @@
-#1 Install and config Nginx
+#1  isntall snap tools
+- block:
+  - name: Install snap tools
+    apt: 
+      name: snapd
+      update_cache: yes
+      
+  - name: Install and upgrade core 
+    shell: |
+      snap install core 
+      snap refresh core
+      ln -sf /snap /data
+    failed_when: false
+    
+#2 Install and config Nginx
 - name: import an official nginx signing key
   apt_key: 
     url: https://nginx.org/keys/nginx_signing.key
@@ -14,16 +28,11 @@
   apt:
     name: [nginx]
 
-#2 Install Certbot for Nginx
+#3 Install Certbot for Nginx
 - name: Install certbot
   shell: |
-    apt-get update
-    apt-get install -y software-properties-common
-    add-apt-repository universe
-    echo "" | add-apt-repository ppa:certbot/certbot 
-    apt-get update
-    apt-get install -y certbot python3-certbot-nginx
-    certbot renew --dry-run
+    snap install --classic certbot
+    ln -sf /snap/bin/certbot /usr/bin/certbot
   when: nginx_certbot
 
 - name: Change Directory Owner
