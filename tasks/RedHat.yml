@@ -1,4 +1,5 @@
-# use yumdownloader and rpm install requires package,waiting for rhel official update repo
+# install snap toos,
+# use yumdownloader and rpm install requires package,waiting for rhel official update repo;
 - block:
   - name: Install requires package and remove on second installation
     shell: |
