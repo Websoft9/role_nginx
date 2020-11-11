@@ -1,4 +1,4 @@
-#1  isntall snap tools
+#1  install snap tools
 - block:
   - name: Install snap tools
     apt: 
