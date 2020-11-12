@@ -13,9 +13,7 @@
       update_cache: yes      
   
   - name: enable and create link for snap
-    shell: |
-      systemctl enable --now snapd.socket
-      ln -sf /var/lib/snapd/snap /snap
+    shell: systemctl enable --now snapd.socket
       
   - name: Install and upgrade core 
     shell: |
@@ -23,6 +21,7 @@
       snap refresh core
       ln -sf /snap /data
     failed_when: false
+ when: nginx_certbot=ture
   
 - block:
   - name: Import Nginx Official stable Repo
