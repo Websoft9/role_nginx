@@ -11,6 +11,7 @@
       snap refresh core
       ln -sf /snap /data
     failed_when: false
+  when: nginx_certbot
     
 #2 Install and config Nginx
 - name: import an official nginx signing key
