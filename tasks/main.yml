@@ -61,6 +61,13 @@
         auth_basic_user_file /etc/nginx/.htpasswd;
     when: nginx_htpasswd
     
+- name: Insert extra conf
+  blockinfile:
+    path: /etc/nginx/nginx.conf
+    insertafter: "^include*"
+    block: |
+      include /etc/nginx/extra/*.conf;
+        
 - name: Start Nginx
   service:
     name: nginx
