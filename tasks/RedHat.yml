@@ -1,6 +1,10 @@
 # install snap toos,
+<<<<<<< HEAD
 # use yumdownloader and rpm install requires package,waiting for rhel official update repo;
 - block:      
+=======
+- block:   
+>>>>>>> origin/main
   - name: Install snap tools
     yum: 
       name: snapd
