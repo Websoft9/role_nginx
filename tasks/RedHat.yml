@@ -1,12 +1,6 @@
 # install snap toos,
 # use yumdownloader and rpm install requires package,waiting for rhel official update repo;
-- block:
-  - name: Install requires package and remove on second installation
-    shell: |
-      yumdownloader snapd-selinux-2.47.1-1.el7.noarch
-      rpm --force --nodeps -ivh snapd-selinux-2.47.1-1.el7.noarch.rpm
-      test -e snapd-selinux-* && rm -rf snapd-selinux-*.rpm
-      
+- block:      
   - name: Install snap tools
     yum: 
       name: snapd
