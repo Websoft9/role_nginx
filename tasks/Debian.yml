@@ -32,7 +32,7 @@
 - name: Install htpassword
   apt: 
     name: apache2-utils
-  when: nginx_htpasswd=True
+  when: nginx_htpasswd == True
 
 - name: Change Directory Owner
   file:
