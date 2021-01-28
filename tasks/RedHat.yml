@@ -64,7 +64,7 @@
 
 - name: Install Nginx
   yum:
-    name: [nginx]
+    name: [nginx,httpd-tools]
   
 - name: Change Directory Owner
   file:
