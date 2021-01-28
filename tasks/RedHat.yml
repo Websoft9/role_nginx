@@ -64,7 +64,12 @@
 
 - name: Install Nginx
   yum:
-    name: [nginx,httpd-tools]
+    name: nginx
+    
+- name: Install htpassword
+  yum: 
+    name: apache2-utils
+  when: nginx_htpasswd: True
   
 - name: Change Directory Owner
   file:
