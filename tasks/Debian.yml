@@ -25,9 +25,14 @@
     filename: nginx
     update_cache: yes
 
-- name: Install Nginx
+- name: Install Nginx 
   apt:
-    name: [nginx]
+    name: nginx
+
+- name: Install htpassword
+  apt: 
+    name: apache2-utils
+  when: nginx_htpasswd: True
 
 - name: Change Directory Owner
   file:
