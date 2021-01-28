@@ -68,7 +68,7 @@
     
 - name: Install htpassword
   yum: 
-    name: apache2-utils
+    name: httpd-tools
   when: nginx_htpasswd: True
   
 - name: Change Directory Owner
