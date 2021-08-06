@@ -16,6 +16,9 @@ nginx_app_root:
 nginx_listen_port: "80"
 
 # nginx username and password swith True|False, default credentials is admin/admin
+
+#nginx_login_account: ["admin", "123456"]
+
 nginx_htpasswd: False
 
 nginx_certbot: True
