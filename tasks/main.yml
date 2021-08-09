@@ -46,12 +46,8 @@
     args:
       chdir: /etc/nginx/conf.d/rewrite
     
-# add new user and password setfile
+# add new user and password on nginx
 - block: 
-  - name: Copy htpasswd.conf
-    copy:
-      src: htpasswd.conf
-      dest: /etc/nginx/.htpasswd
   - name: Insert ngnix service password authority segment
     blockinfile:
       path: /etc/nginx/conf.d/default.conf
