@@ -59,12 +59,9 @@
       block: |
         auth_basic "Restricted Content";
         auth_basic_user_file /etc/nginx/.htpasswd;
-  - shell: echo "nginx_login_account"
-    register: htest
-  - debug:
-      var: nginx_login_account
-  - debug:
-      var: nginx_login_account[0]
+  - name:
+    shell: |
+      htpasswd -bc /etc/nginx/.htpasswd  {{nginx_login_account[0]}} {{nginx_login_account[1]}}
     when: nginx_login_account is defined and nginx_login_account != none
         
 - name: Start Nginx
