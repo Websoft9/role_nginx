@@ -58,7 +58,7 @@
   - name: Init nginx password
     shell: |
       htpasswd -bc /etc/nginx/.htpasswd  {{nginx_login_account[0]}} {{nginx_login_account[1]}}
-    when: nginx_login_account is defined and nginx_login_account != none
+  when: nginx_login_account is defined and nginx_login_account != none
         
 - name: Start Nginx
   service:
