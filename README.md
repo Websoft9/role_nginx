@@ -61,14 +61,7 @@ Notes:
 
 #### How to set init for Ngnix password?
 
-1. set nginx_htpasswd: Ture
-2. set init configure
 ```
-init_application:
-  nginx:
-    username: "admin"
-    password: "admin"
-    commands: 
-      - htpasswd -b /etc/nginx/.htpasswd admin $new_password
-      - systemctl restart nginx
+htpasswd -b /etc/nginx/.htpasswd username password
+systemctl restart nginx
 ```
